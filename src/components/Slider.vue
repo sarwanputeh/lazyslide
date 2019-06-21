@@ -1,15 +1,13 @@
 <template>
     <div class="slide">
-      <div class="row card">
-        <div class="column">
+      <div :class="slide.description?'row card': 'row'">
+        <div :class="slide.description?'column': ''">
           <slot name="media"></slot>
         </div>
-        <div class="column">
-          <slot name="text"></slot>
-          <slot name="text1"></slot>
+        <div v-if="slide.description" class="column" style="padding: 2px">
+          <p>{{slide.description}}</p>
         </div>
       </div>
-        <!-- <slot name="test2"></slot> -->
     </div>
 </template>
 <script>
@@ -44,7 +42,6 @@ export default{
              background-size: contain;
         }
         .slide{
-            width: 400px;
             padding: 2px;
             display: inline-block;
         }
